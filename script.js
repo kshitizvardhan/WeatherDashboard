@@ -7,9 +7,11 @@ const container = document.querySelector('.container');
 const API_KEY = '20eb4e00e1c46e97bcd5009a3fb699fe';
 
 
-function getWeather(){
+function getWeather(city){
     
-    const city = document.querySelector(".input-weather input").value;
+    if (city === undefined){
+        city = document.querySelector(".input-weather input").value;
+    }
     console.log(city)
 
     if (city === '')
@@ -85,6 +87,38 @@ function getWeather(){
         })
 }
 
+function getUserCoordinates(){
+    navigator.geolocation.getCurrentPosition(
+        position => {
+            const { latitude, longitude } = position.coords; // Get coordinates of user location
+            // Get city name from coordinates using reverse geocoding API
+            const API_URL = `https://api.openweathermap.org/geo/1.0/reverse?lat=${latitude}&lon=${longitude}&limit=1&appid=${API_KEY}`;
+            fetch(API_URL)
+                .then(response => response.json())
+                .then(data => {
+                    console.log(data);
+                    const city = data[0].name;
+                    console.log(city);
+                    getWeather(city);
+                })
+            
+                .catch(() => {
+                    alert("An error occurred while fetching the city name!");
+                });
+            },
+            
+            error => { // Shows alert if user denied the location permission
+            if (error.code === error.PERMISSION_DENIED) {
+                alert("Geolocation request denied. Please reset location permission to grant access again.");
+            } else {
+                alert("Geolocation request error. Please reset location permission.");
+            }
+        });
+}
+
+locationButton.addEventListener('click', () => {
+    getUserCoordinates();
+})
 
 searchButton.addEventListener('click', () => {
     getWeather();
