@@ -4,12 +4,11 @@ const locationButton = document.querySelector(".location-btn");
 const currentWeatherDiv = document.querySelector(".weather-data");
 const error404 = document.querySelector(".not-found");
 const container = document.querySelector('.container');
+const API_KEY = '20eb4e00e1c46e97bcd5009a3fb699fe';
 
 
-searchButton.addEventListener('click', () => {
-
-    const API_KEY = '20eb4e00e1c46e97bcd5009a3fb699fe';
-
+function getWeather(){
+    
     const city = document.querySelector(".input-weather input").value;
     console.log(city)
 
@@ -23,6 +22,7 @@ searchButton.addEventListener('click', () => {
             if(json.cod === "404"){
                 currentWeatherDiv.style.display = 'none';
                 error404.style.display = 'block';
+                error404.classList.add('fadeIn');
                 return;
             }
 
@@ -39,11 +39,13 @@ searchButton.addEventListener('click', () => {
                 case 'Clear':
                     image.src = 'images/clear.png';
                     bgColor.style.backgroundColor = '#e05b19';
+                    bgColor.style.color = '#fff'
                     break;
 
                 case 'Rain':
                     image.src = 'images/rain.png';
                     bgColor.style.backgroundColor = '#005EA6';
+                    bgColor.style.color = '#fff'
                     break;
 
                 case 'Snow':
@@ -68,15 +70,25 @@ searchButton.addEventListener('click', () => {
                     image.src = '';
             }
 
-            cityName.innerHTML = `${city}`
+            cityName.innerHTML = `${json.name}`
             temperature.innerHTML = `Feels like ${parseInt(json.main.temp)}°C`;
             description.innerHTML = `${json.weather[0].description}`;
             humidity.innerHTML = `Humidity: ${json.main.humidity}%`;
             wind.innerHTML = `Wind Blows ${parseInt(json.wind.speed)}Km/h`;
-
         })
 
         .catch((err) =>{
             console.log(err);
         })
+}
+
+
+searchButton.addEventListener('click', () => {
+    getWeather();
+})
+
+document.addEventListener('keydown',(check) =>{
+    if(check.key === "Enter"){
+        getWeather();
+    }
 })

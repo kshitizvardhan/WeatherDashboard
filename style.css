@@ -94,6 +94,7 @@ body {
     padding: 20px 70px 20px 20px;
     display: flex;
     justify-content: space-between;
+    transition: all 0.9s linear;
   }
   .current-weather h2 {
     font-weight: 700;
@@ -125,6 +126,7 @@ body {
     text-align: center;
     margin-top: 50px;
     display: none;
+    transition: all 0.9s linear;
   }
 
   .not-found img{
