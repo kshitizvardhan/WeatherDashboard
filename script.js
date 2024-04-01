@@ -26,6 +26,9 @@ function getWeather(){
                 return;
             }
 
+            error404.style.display = 'none';
+            currentWeatherDiv.style.display = 'block';
+
             const image = document.querySelector('.weather-data .current-weather .icon img');
             const cityName = document.querySelector('.weather-data .current-weather .details .name');
             const temperature = document.querySelector('.weather-data .current-weather .details .temperature');
