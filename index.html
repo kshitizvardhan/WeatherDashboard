@@ -9,6 +9,7 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="style.css" />
+    <script src="script.js" defer></script>
   </head>
   <body>
     <div class="top">
@@ -22,49 +23,24 @@
         <div class="separator"></div>
         <button class="location-btn">Use Current Location</button>
       </div>
+
+      <div class="not-found">
+        <img src="images/error404.jpg" style="height: 200px; width: 200px;">
+        <p>Oops! Invalid location :/</p>
+      </div>
+
       <div class="weather-data">
         <div class="current-weather">
             <div class="details">
-              <h2>_______ ( ______ )</h2>
-              <h6>Temperature: __°C</h6>
-              <h6>Wind: __ M/S</h6>
-              <h6>Humidity: __%</h6>
+              <h2 class="name">_______</h2>
+              <h6 class="description">________</h6>
+              <h6 class="temperature">Temperature: __°C</h6>
+              <h6 class="wind">Wind: __ M/S</h6>
+              <h6 class="humidity">Humidity: __%</h6>
             </div>
-        </div>
-        <div class="days-forecast">
-          <h2>5-Day Forecast</h2>
-          <ul class="weather-cards">
-            <li class="card">
-              <h3>( ______ )</h3>
-              <h6>Temp: __C</h6>
-              <h6>Wind: __ M/S</h6>
-              <h6>Humidity: __%</h6>
-            </li>
-            <li class="card">
-              <h3>( ______ )</h3>
-              <h6>Temp: __C</h6>
-              <h6>Wind: __ M/S</h6>
-              <h6>Humidity: __%</h6>
-            </li>
-            <li class="card">
-              <h3>( ______ )</h3>
-              <h6>Temp: __C</h6>
-              <h6>Wind: __ M/S</h6>
-              <h6>Humidity: __%</h6>
-            </li>
-            <li class="card">
-              <h3>( ______ )</h3>
-              <h6>Temp: __C</h6>
-              <h6>Wind: __ M/S</h6>
-              <h6>Humidity: __%</h6>
-            </li>
-            <li class="card">
-              <h3>( ______ )</h3>
-              <h6>Temp: __C</h6>
-              <h6>Wind: __ M/S</h6>
-              <h6>Humidity: __%</h6>
-            </li>
-          </ul>
+            <div class="icon">
+              <img src="">
+          </div>
         </div>
       </div>
     </div>
